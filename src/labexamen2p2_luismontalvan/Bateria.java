@@ -8,7 +8,7 @@ package labexamen2p2_luismontalvan;
  *
  * @author luism
  */
-public class Bateria {
+public class Bateria extends Parte{
    private int capacidad;
    private String material;
 
@@ -16,6 +16,12 @@ public class Bateria {
     }
 
     public Bateria(int capacidad, String material) {
+        this.capacidad = capacidad;
+        this.material = material;
+    }
+
+    public Bateria(int capacidad, String material, int tiempoEsamblaje) {
+        super(tiempoEsamblaje);
         this.capacidad = capacidad;
         this.material = material;
     }
