@@ -69,7 +69,8 @@ public class Computadora {
 
     @Override
     public String toString() {
-        return String.valueOf(serie);
+        return "Computadora{" + "serie=" + serie + ", ano=" + ano + ", color=" + color + ", material=" + material + ", partes=" + partes + '}';
     }
+
     
 }

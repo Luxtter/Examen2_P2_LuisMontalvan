@@ -5,6 +5,8 @@
 package labexamen2p2_luismontalvan;
 
 import java.awt.Color;
+import java.util.ArrayList;
+import javax.swing.DefaultListModel;
 import javax.swing.JColorChooser;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.tree.DefaultTreeModel;
@@ -594,11 +596,11 @@ public class Main extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Técnico"
+                "Nombre", "Edad", "Genero", "Computadoras Esambladas"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false
+                false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -612,11 +614,11 @@ public class Main extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Computadora"
+                "Serie", "Año", "Material", "Color", "Partes"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false
+                false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -626,6 +628,11 @@ public class Main extends javax.swing.JFrame {
         jScrollPane2.setViewportView(jtComputadora);
 
         jButton1.setText("Esamblar");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
         jPanel10.setLayout(jPanel10Layout);
@@ -761,8 +768,9 @@ public class Main extends javax.swing.JFrame {
         compu.getPartes().add(pantalla);
         compu.getPartes().add(procesador);
         DefaultTableModel model = (DefaultTableModel)jtComputadora.getModel();
-        Object[] newRow = {serie};
+        Object[] newRow = {serie,ano,material,color,compu.getPartes()};
         model.addRow(newRow);
+        computadoras.add(compu);
     }//GEN-LAST:event_jButton3MouseClicked
 
     private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
@@ -777,10 +785,22 @@ public class Main extends javax.swing.JFrame {
             genero = jRadioButton2.getText();
         }
         Tecnico tec = new Tecnico(jtfNombreTecnico.getText(), genero, (int)jspEdad.getValue(), 0);
-        Object[] newRow = {tec.getNombre()};
+        
         DefaultTableModel model = (DefaultTableModel)jtTecnico.getModel();
+        Object[] newRow = {tec.getNombre(),tec.getEdad(),genero,0};
         model.addRow(newRow);
+        tecnico.add(tec);
     }//GEN-LAST:event_jButton2MouseClicked
+
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        Computadora compu =
+        if (rootPaneCheckingEnabled) {
+            for (int i = 0; i < ¿; i++) {
+
+            }
+            Objcet[] newRow = {};
+        }
+    }//GEN-LAST:event_jButton1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -900,4 +920,6 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JTextField jtfSerie;
     private javax.swing.JTextField jtfTipoPantalla;
     // End of variables declaration//GEN-END:variables
+    ArrayList<Computadora> computadoras = new ArrayList();
+    ArrayList<Tecnico> tecnico = new ArrayList();
 }

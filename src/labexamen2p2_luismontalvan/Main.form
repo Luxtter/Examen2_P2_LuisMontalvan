@@ -905,8 +905,11 @@
                         <Component class="javax.swing.JTable" name="jtTecnico">
                           <Properties>
                             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                              <Table columnCount="1" rowCount="0">
-                                <Column editable="false" title="T&#xe9;cnico" type="java.lang.Object"/>
+                              <Table columnCount="4" rowCount="0">
+                                <Column editable="false" title="Nombre" type="java.lang.Object"/>
+                                <Column editable="false" title="Edad" type="java.lang.Object"/>
+                                <Column editable="false" title="Genero" type="java.lang.Object"/>
+                                <Column editable="false" title="Computadoras Esambladas" type="java.lang.Object"/>
                               </Table>
                             </Property>
                           </Properties>
@@ -923,8 +926,12 @@
                         <Component class="javax.swing.JTable" name="jtComputadora">
                           <Properties>
                             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                              <Table columnCount="1" rowCount="0">
-                                <Column editable="false" title="Computadora" type="java.lang.Object"/>
+                              <Table columnCount="5" rowCount="0">
+                                <Column editable="false" title="Serie" type="java.lang.Object"/>
+                                <Column editable="false" title="A&#xf1;o" type="java.lang.Object"/>
+                                <Column editable="false" title="Material" type="java.lang.Object"/>
+                                <Column editable="false" title="Color" type="java.lang.Object"/>
+                                <Column editable="false" title="Partes" type="java.lang.Object"/>
                               </Table>
                             </Property>
                           </Properties>
@@ -935,6 +942,9 @@
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Esamblar"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButton1MouseClicked"/>
+                      </Events>
                     </Component>
                   </SubComponents>
                 </Container>
