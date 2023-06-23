@@ -6,6 +6,8 @@ package labexamen2p2_luismontalvan;
 
 import java.awt.Color;
 import javax.swing.JColorChooser;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.tree.DefaultTreeModel;
 
 /**
  *
@@ -29,6 +31,7 @@ public class Main extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         jTabbedPane2 = new javax.swing.JTabbedPane();
@@ -88,13 +91,21 @@ public class Main extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jTabbedPane3 = new javax.swing.JTabbedPane();
         jPanel7 = new javax.swing.JPanel();
+        jLabel28 = new javax.swing.JLabel();
+        jLabel29 = new javax.swing.JLabel();
+        jLabel30 = new javax.swing.JLabel();
+        jtfNombreTecnico = new javax.swing.JTextField();
+        jspEdad = new javax.swing.JSpinner();
+        jRadioButton1 = new javax.swing.JRadioButton();
+        jRadioButton2 = new javax.swing.JRadioButton();
+        jButton2 = new javax.swing.JButton();
         jPanel8 = new javax.swing.JPanel();
         jPanel9 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
         jTabbedPane4 = new javax.swing.JTabbedPane();
         jPanel10 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jtTecnico = new javax.swing.JTable();
         jScrollPane2 = new javax.swing.JScrollPane();
         jtComputadora = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
@@ -467,15 +478,74 @@ public class Main extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Computadoras", jPanel1);
 
+        jLabel28.setText("Nombre");
+
+        jLabel29.setText("Edad");
+
+        jLabel30.setText("Genero");
+
+        buttonGroup1.add(jRadioButton1);
+        jRadioButton1.setText("Hombre");
+
+        buttonGroup1.add(jRadioButton2);
+        jRadioButton2.setText("Mujer");
+        jRadioButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton2ActionPerformed(evt);
+            }
+        });
+
+        jButton2.setText("Crear Tecnico");
+        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton2MouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 602, Short.MAX_VALUE)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addGap(32, 32, 32)
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel30, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel29, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel28, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jtfNombreTecnico, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jspEdad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel7Layout.createSequentialGroup()
+                                .addComponent(jRadioButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jRadioButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addGap(244, 244, 244)
+                        .addComponent(jButton2)))
+                .addContainerGap(252, Short.MAX_VALUE))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 487, Short.MAX_VALUE)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addGap(68, 68, 68)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel28)
+                    .addComponent(jtfNombreTecnico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel29)
+                    .addComponent(jspEdad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel30)
+                    .addComponent(jRadioButton1)
+                    .addComponent(jRadioButton2))
+                .addGap(77, 77, 77)
+                .addComponent(jButton2)
+                .addContainerGap(219, Short.MAX_VALUE))
         );
 
         jTabbedPane3.addTab("Crear Técnico", jPanel7);
@@ -519,7 +589,7 @@ public class Main extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Tecnicos", jPanel2);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jtTecnico.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -535,7 +605,7 @@ public class Main extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(jtTecnico);
 
         jtComputadora.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -564,9 +634,9 @@ public class Main extends javax.swing.JFrame {
             .addGroup(jPanel10Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(21, 21, 21))
+                .addContainerGap())
             .addGroup(jPanel10Layout.createSequentialGroup()
                 .addGap(260, 260, 260)
                 .addComponent(jButton1)
@@ -690,8 +760,27 @@ public class Main extends javax.swing.JFrame {
         compu.getPartes().add(teclado);
         compu.getPartes().add(pantalla);
         compu.getPartes().add(procesador);
-        
+        DefaultTableModel model = (DefaultTableModel)jtComputadora.getModel();
+        Object[] newRow = {serie};
+        model.addRow(newRow);
     }//GEN-LAST:event_jButton3MouseClicked
+
+    private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jRadioButton2ActionPerformed
+
+    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
+        String genero;
+        if (jRadioButton1.isSelected()) {
+            genero= jRadioButton1.getText();
+        } else {
+            genero = jRadioButton2.getText();
+        }
+        Tecnico tec = new Tecnico(jtfNombreTecnico.getText(), genero, (int)jspEdad.getValue(), 0);
+        Object[] newRow = {tec.getNombre()};
+        DefaultTableModel model = (DefaultTableModel)jtTecnico.getModel();
+        model.addRow(newRow);
+    }//GEN-LAST:event_jButton2MouseClicked
 
     /**
      * @param args the command line arguments
@@ -729,7 +818,9 @@ public class Main extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JLabel jLabel1;
@@ -752,7 +843,10 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel28;
+    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -770,6 +864,8 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
+    private javax.swing.JRadioButton jRadioButton1;
+    private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
@@ -777,7 +873,6 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JTabbedPane jTabbedPane3;
     private javax.swing.JTabbedPane jTabbedPane4;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable3;
     private javax.swing.JButton jbtnColorComputador;
     private javax.swing.JButton jbtnColorTeclado;
@@ -791,14 +886,17 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JSpinner jsp4;
     private javax.swing.JSpinner jsp5;
     private javax.swing.JSpinner jsp6;
+    private javax.swing.JSpinner jspEdad;
     private javax.swing.JSpinner jspHoras;
     private javax.swing.JSpinner jspNucleos;
     private javax.swing.JTable jtComputadora;
+    private javax.swing.JTable jtTecnico;
     private javax.swing.JTextField jtfMarcaDD;
     private javax.swing.JTextField jtfMarcaRAM;
     private javax.swing.JTextField jtfMaterialBateria;
     private javax.swing.JTextField jtfMaterialComputadora;
     private javax.swing.JTextField jtfMaterialTeclado;
+    private javax.swing.JTextField jtfNombreTecnico;
     private javax.swing.JTextField jtfSerie;
     private javax.swing.JTextField jtfTipoPantalla;
     // End of variables declaration//GEN-END:variables
