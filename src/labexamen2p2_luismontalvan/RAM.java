@@ -49,6 +49,11 @@ public class RAM extends Parte{
     public void setTiempoEsamblaje(int tiempoEsamblaje) {
         this.tiempoEsamblaje = tiempoEsamblaje;
     }
+
+    @Override
+    public String toString() {
+        return "RAM";
+    }
     
     
 }

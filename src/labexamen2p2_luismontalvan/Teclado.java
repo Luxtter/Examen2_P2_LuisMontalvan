@@ -55,7 +55,7 @@ public class Teclado extends Parte{
 
     @Override
     public String toString() {
-        return "Teclado{" + "material=" + material + ", color=" + color + '}';
+        return "Teclado";
     }
    
 }

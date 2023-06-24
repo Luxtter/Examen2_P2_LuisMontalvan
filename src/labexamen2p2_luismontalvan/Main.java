@@ -6,8 +6,10 @@ package labexamen2p2_luismontalvan;
 
 import java.awt.Color;
 import java.util.ArrayList;
+import java.util.Date;
 import javax.swing.DefaultListModel;
 import javax.swing.JColorChooser;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.tree.DefaultTreeModel;
 
@@ -34,6 +36,9 @@ public class Main extends javax.swing.JFrame {
     private void initComponents() {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
+        jDialog1 = new javax.swing.JDialog();
+        jProgressBar1 = new javax.swing.JProgressBar();
+        jProgressBar2 = new javax.swing.JProgressBar();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         jTabbedPane2 = new javax.swing.JTabbedPane();
@@ -113,7 +118,28 @@ public class Main extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jPanel11 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTable3 = new javax.swing.JTable();
+        jtBitacora = new javax.swing.JTable();
+
+        javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
+        jDialog1.getContentPane().setLayout(jDialog1Layout);
+        jDialog1Layout.setHorizontalGroup(
+            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDialog1Layout.createSequentialGroup()
+                .addGap(96, 96, 96)
+                .addGroup(jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jProgressBar2, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(105, Short.MAX_VALUE))
+        );
+        jDialog1Layout.setVerticalGroup(
+            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDialog1Layout.createSequentialGroup()
+                .addGap(46, 46, 46)
+                .addComponent(jProgressBar2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(45, 45, 45)
+                .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(109, Short.MAX_VALUE))
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -519,11 +545,11 @@ public class Main extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jtfNombreTecnico, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jspEdad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel7Layout.createSequentialGroup()
                                 .addComponent(jRadioButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jRadioButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(jRadioButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jspEdad, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel7Layout.createSequentialGroup()
                         .addGap(244, 244, 244)
                         .addComponent(jButton2)))
@@ -633,6 +659,11 @@ public class Main extends javax.swing.JFrame {
                 jButton1MouseClicked(evt);
             }
         });
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
         jPanel10.setLayout(jPanel10Layout);
@@ -663,7 +694,7 @@ public class Main extends javax.swing.JFrame {
 
         jTabbedPane4.addTab("Simulacion", jPanel10);
 
-        jTable3.setModel(new javax.swing.table.DefaultTableModel(
+        jtBitacora.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -671,7 +702,7 @@ public class Main extends javax.swing.JFrame {
                 "Pieza", "Tiempo de Instalación (secs.)", "Fecha"
             }
         ));
-        jScrollPane3.setViewportView(jTable3);
+        jScrollPane3.setViewportView(jtBitacora);
 
         javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
         jPanel11.setLayout(jPanel11Layout);
@@ -793,14 +824,76 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2MouseClicked
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
-        Computadora compu =
-        if (rootPaneCheckingEnabled) {
-            for (int i = 0; i < ¿; i++) {
-
+        Computadora compu = computadoras.get(jtComputadora.getSelectedRow());
+        Tecnico tec  = tecnico.get(jtTecnico.getSelectedRow());
+        DefaultTableModel model = (DefaultTableModel)jtBitacora.getModel();
+        double rand = Math.random();
+        HiloBarras hb = new HiloBarras(jProgressBar1, jProgressBar2, true);
+        jDialog1.pack();
+        jDialog1.setLocationRelativeTo(null);
+        jDialog1.setVisible(true);
+        if (tec.getCompEsambladas()<=5) {
+            if (rand<=0.30) {
+                JOptionPane.showConfirmDialog(this, "El técnico tuvo un error en la instalación");
+            }else{
+             for (Parte p : compu.partes) {
+                String pieza = p.toString();
+                int tiempo = p.getTiempoEsamblaje();
+                Date date = new Date();
+                Object[]newRow = {pieza,tiempo,date};
+                model.addRow(newRow);
+                hb.getSegundos().add(tiempo);
+            }   
+            }//fin
+            
+        }else if(tec.getCompEsambladas()<=16) {
+            if (rand<=0.22) {
+                JOptionPane.showConfirmDialog(this, "El técnico tuvo un error en la instalación");
+            }else{
+             for (Parte p : compu.partes) {
+                String pieza = p.toString();
+                int tiempo = p.getTiempoEsamblaje();
+                Date date = new Date();
+                Object[]newRow = {pieza,tiempo,date};
+                model.addRow(newRow);
+                hb.getSegundos().add(tiempo);
+            }   
             }
-            Objcet[] newRow = {};
+        }else if(tec.getCompEsambladas()<=30){
+            if (rand<=0.13) {
+                JOptionPane.showConfirmDialog(this, "El técnico tuvo un error en la instalación");
+            }else{
+             for (Parte p : compu.partes) {
+                String pieza = p.toString();
+                int tiempo = p.getTiempoEsamblaje();
+                Date date = new Date();
+                Object[]newRow = {pieza,tiempo,date};
+                model.addRow(newRow);
+                hb.getSegundos().add(tiempo);
+            }   
+            }
+        }else{
+            if (rand<=0.07) {
+                JOptionPane.showConfirmDialog(this, "El técnico tuvo un error en la instalación");
+            }else{
+             for (Parte p : compu.partes) {
+                String pieza = p.toString();
+                int tiempo = p.getTiempoEsamblaje();
+                Date date = new Date();
+                Object[]newRow = {pieza,tiempo,date};
+                model.addRow(newRow);
+                hb.getSegundos().add(tiempo);
+            }   
+            }
+            
         }
+        hb.start();
+        hb.run();
     }//GEN-LAST:event_jButton1MouseClicked
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -843,6 +936,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JCheckBox jCheckBox1;
+    private javax.swing.JDialog jDialog1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -884,6 +978,8 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
+    private javax.swing.JProgressBar jProgressBar1;
+    private javax.swing.JProgressBar jProgressBar2;
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JScrollPane jScrollPane1;
@@ -893,7 +989,6 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JTabbedPane jTabbedPane3;
     private javax.swing.JTabbedPane jTabbedPane4;
-    private javax.swing.JTable jTable3;
     private javax.swing.JButton jbtnColorComputador;
     private javax.swing.JButton jbtnColorTeclado;
     private javax.swing.JFormattedTextField jffAno;
@@ -909,6 +1004,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JSpinner jspEdad;
     private javax.swing.JSpinner jspHoras;
     private javax.swing.JSpinner jspNucleos;
+    private javax.swing.JTable jtBitacora;
     private javax.swing.JTable jtComputadora;
     private javax.swing.JTable jtTecnico;
     private javax.swing.JTextField jtfMarcaDD;

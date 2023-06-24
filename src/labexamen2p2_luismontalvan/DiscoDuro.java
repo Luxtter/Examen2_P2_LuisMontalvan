@@ -47,7 +47,7 @@ public class DiscoDuro extends Parte{
 
     @Override
     public String toString() {
-        return "DiscoDuro{" + "tamano=" + tamano + ", marca=" + marca + '}';
+        return "DiscoDuro";
     }
     
 }
